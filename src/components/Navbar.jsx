@@ -9,9 +9,9 @@ export function Navbar() {
     <header className="border-b bg-background sticky top-0 z-50">
       <div className="container">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold hover:text-primary transition-colors">
-            Showkat Shafi
-          </Link>
+<Link to="/" className="text-xl font-bold hover:text-primary transition-colors">
+              Beyond the Shelf
+            </Link>
 
           <button
             className="md:hidden p-2"
