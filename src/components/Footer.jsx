@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <h3 className="font-bold mb-4">Showkat Shafi</h3>
             <p className="text-sm text-muted-foreground">
-              Developer, designer, and tech enthusiast.
+              A shelf for poetry enthusiasts, art, literature and theatre lovers.
             </p>
           </div>
           <div>
@@ -19,11 +19,10 @@ export function Footer() {
             </nav>
           </div>
           <div>
-            <h4 className="font-medium mb-4">Admin</h4>
-            <nav className="space-y-2 text-sm text-muted-foreground">
-              <Link to="/admin" className="block hover:text-foreground">Dashboard</Link>
-              <Link to="/login" className="block hover:text-foreground">Login</Link>
-            </nav>
+            <h4 className="font-medium mb-4">Contact</h4>
+            <p className="text-sm text-muted-foreground">
+              info [at] showkatshafi [dot] com
+            </p>
           </div>
         </div>
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">

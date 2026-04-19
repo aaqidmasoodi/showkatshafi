@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import BlogIndex from "./pages/BlogIndex.tsx";
 import PostDetail from "./pages/PostDetail.tsx";
+import About from "./pages/About.tsx";
 import CategoryPosts from "./pages/CategoryPosts";
 import TagPosts from "./pages/TagPosts";
 import Login from "./pages/Login.tsx";
@@ -26,6 +27,7 @@ export default function App() {
             <main className="flex-1">
               <Routes>
                 <Route path="/" element={<BlogIndex />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/post/:slug" element={<PostDetail />} />
                 <Route path="/category/:slug" element={<CategoryPosts />} />
                 <Route path="/tag/:slug" element={<TagPosts />} />
