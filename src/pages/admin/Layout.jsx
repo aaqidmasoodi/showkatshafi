@@ -27,6 +27,7 @@ export default function AdminLayout() {
   const navItems = [
     { path: "/admin", label: "Posts", icon: "📝" },
     { path: "/admin/posts/new", label: "New Post", icon: "➕" },
+    { path: "/admin/categories", label: "Categories", icon: "📁" },
   ];
 
   return (

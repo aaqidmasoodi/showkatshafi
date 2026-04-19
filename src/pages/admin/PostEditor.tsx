@@ -11,6 +11,7 @@ import {
   getAllTagsForAdmin,
   getAllCategoriesForAdmin,
 } from "../../lib/admin-posts";
+import { toast } from "../../components/Toast";
 import { db } from "../../lib/db";
 
 export default function PostEditor() {
@@ -100,6 +101,8 @@ export default function PostEditor() {
         if (selectedTags.length > 0) {
           await setPostTags(result.id, selectedTags);
         }
+        const newStatus = status === "published" ? "published" : "saved as draft";
+        toast(`Post ${newStatus} successfully!`);
         navigate(`/admin/posts/${result.id}`);
       } else {
         await updatePost(
@@ -114,23 +117,28 @@ export default function PostEditor() {
         );
         await setPostTags(id, selectedTags);
         setPreviousStatus(status);
-        alert("Post saved!");
+        const saveStatus = status === "published" ? "published" : "saved as draft";
+        toast(`Changes ${saveStatus} successfully!`);
       }
     } catch (err) {
       console.error("Save error:", err);
-      alert(err instanceof Error ? err.message : "Error saving post");
+      toast(err instanceof Error ? err.message : "Error saving post", "error");
     } finally {
       setSaving(false);
     }
   }
 
   async function handleDelete() {
+    console.log("Deleting post with id:", id);
     if (!confirm("Are you sure you want to delete this post?")) return;
     try {
-      await deletePost(id);
+      await deletePost(id!);
+      console.log("Post deleted successfully");
+      toast("Post deleted!");
       navigate("/admin/posts");
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Error deleting post");
+      console.error("Delete error:", err);
+      toast(err instanceof Error ? err.message : "Error deleting post", "error");
     }
   }
 

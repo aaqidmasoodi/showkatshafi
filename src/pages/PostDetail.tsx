@@ -41,7 +41,7 @@ export default function PostDetail() {
     <div className="container py-12">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-3">
-          <Link to="/" className="text-sm text-muted-foreground hover:text-primary mb-8 inline-block">
+          <Link to="/" className="text-sm text-muted-foreground hover:text-primary mb-6 block">
             ← Back to Blog
           </Link>
 

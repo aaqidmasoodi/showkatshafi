@@ -28,9 +28,6 @@ export default function BlogIndex() {
         <div className="lg:col-span-3">
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Thoughts on development, design, and the latest in tech.
-            </p>
           </div>
 
           {posts.length === 0 ? (

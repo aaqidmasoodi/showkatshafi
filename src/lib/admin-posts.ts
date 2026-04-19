@@ -74,10 +74,18 @@ export async function updatePost(
 }
 
 export async function deletePost(id: string) {
-  await db.execute({
+  console.log("deletePost called with id:", id);
+  // Delete related records first due to foreign keys
+  await db.execute({ sql: `DELETE FROM post_tags WHERE post_id = ?`, args: [id] });
+  await db.execute({ sql: `DELETE FROM post_likes WHERE post_id = ?`, args: [id] });
+  await db.execute({ sql: `DELETE FROM post_views WHERE post_id = ?`, args: [id] });
+  await db.execute({ sql: `DELETE FROM comments WHERE post_id = ?`, args: [id] });
+  
+  const result = await db.execute({
     sql: `DELETE FROM posts WHERE id = ?`,
     args: [id],
   });
+  console.log("Delete result, rows affected:", result.rowsAffected);
 }
 
 export async function setPostTags(postId: string, tagIds: string[]) {
@@ -86,7 +94,8 @@ export async function setPostTags(postId: string, tagIds: string[]) {
     args: [postId],
   });
 
-  for (const tagId of tagIds) {
+  const validTagIds = tagIds.filter((id) => id && id.trim());
+  for (const tagId of validTagIds) {
     await db.execute({
       sql: `INSERT INTO post_tags (post_id, tag_id) VALUES (?, ?)`,
       args: [postId, tagId],
@@ -106,4 +115,18 @@ export async function getAllCategoriesForAdmin() {
     sql: `SELECT * FROM categories ORDER BY name`,
   });
   return result.rows;
+}
+
+export async function createCategory(name: string) {
+  const id = crypto.randomUUID();
+  const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  await db.execute({
+    sql: `INSERT INTO categories (id, name, slug) VALUES (?, ?, ?)`,
+    args: [id, name, slug],
+  });
+  return { id, name, slug };
+}
+
+export async function deleteCategory(id: string) {
+  await db.execute({ sql: `DELETE FROM categories WHERE id = ?`, args: [id] });
 }
