@@ -26,9 +26,6 @@ export default function BlogIndex() {
     <div className="container py-12">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-3">
-          <div className="mb-8 md:mb-12">
-          </div>
-
           {posts.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-muted-foreground mb-4">No posts yet.</p>
