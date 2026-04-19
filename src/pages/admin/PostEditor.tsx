@@ -12,6 +12,7 @@ import {
   getAllCategoriesForAdmin,
 } from "../../lib/admin-posts";
 import { toast } from "../../components/Toast";
+import { RichTextEditor } from "../../components/RichTextEditor";
 import { db } from "../../lib/db";
 
 export default function PostEditor() {
@@ -234,13 +235,10 @@ export default function PostEditor() {
 
             <div className="form-group">
               <label className="form-label">Content</label>
-              <textarea
+              <RichTextEditor
                 value={body}
-                onChange={(e) => setBody(e.target.value)}
-                className="form-textarea font-mono"
-                rows={20}
-                placeholder="Post content (HTML supported)"
-                required
+                onChange={setBody}
+                placeholder="Write your post content here..."
               />
             </div>
           </div>
