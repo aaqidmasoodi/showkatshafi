@@ -26,8 +26,8 @@ export default function BlogIndex() {
     <div className="container py-12">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-3">
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+          <div className="mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4">Blog</h1>
           </div>
 
           {posts.length === 0 ? (
@@ -36,7 +36,7 @@ export default function BlogIndex() {
               <Link to="/" className="text-primary hover:underline">Go home</Link>
             </div>
           ) : (
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2">
               {posts.map((post) => (
                 <PostCard key={post.id} post={post} />
               ))}

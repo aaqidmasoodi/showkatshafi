@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { ToastContainer } from "./components/Toast";
+import { BackToTop } from "./components/BackToTop";
 import BlogIndex from "./pages/BlogIndex.tsx";
 import PostDetail from "./pages/PostDetail.tsx";
 import About from "./pages/About.tsx";
@@ -12,6 +13,7 @@ import AdminLayout from "./pages/admin/Layout";
 import AdminPosts from "./pages/admin/Posts.tsx";
 import PostEditor from "./pages/admin/PostEditor.tsx";
 import AdminCategories from "./pages/admin/Categories.tsx";
+import AdminTags from "./pages/admin/Tags";
 
 export default function App() {
   return (
@@ -24,6 +26,7 @@ export default function App() {
             <Route path="posts" element={<AdminPosts />} />
             <Route path="posts/:id" element={<PostEditor />} />
             <Route path="categories" element={<AdminCategories />} />
+            <Route path="tags" element={<AdminTags />} />
           </Route>
           <Route path="*" element={<>
             <Navbar />
@@ -39,6 +42,7 @@ export default function App() {
             <Footer />
           </>} />
         </Routes>
+        <BackToTop />
         <ToastContainer />
       </div>
     </BrowserRouter>

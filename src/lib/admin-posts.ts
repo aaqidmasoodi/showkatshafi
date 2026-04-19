@@ -104,9 +104,11 @@ export async function setPostTags(postId: string, tagIds: string[]) {
 }
 
 export async function getAllTagsForAdmin() {
+  console.log("getAllTagsForAdmin running");
   const result = await db.execute({
-    sql: `SELECT * FROM tags ORDER BY name`,
+    sql: `SELECT id, name, slug FROM tags ORDER BY name`,
   });
+  console.log("getAllTagsForAdmin result:", JSON.stringify(result.rows, null, 2));
   return result.rows;
 }
 
@@ -129,4 +131,27 @@ export async function createCategory(name: string) {
 
 export async function deleteCategory(id: string) {
   await db.execute({ sql: `DELETE FROM categories WHERE id = ?`, args: [id] });
+}
+
+export async function createTag(name: string) {
+  const id = crypto.randomUUID();
+  const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  await db.execute({
+    sql: `INSERT INTO tags (id, name, slug) VALUES (?, ?, ?)`,
+    args: [id, name, slug],
+  });
+  return { id, name, slug };
+}
+
+export async function deleteTag(id: string) {
+  console.log("Deleting tag:", id);
+  try {
+    await db.execute({ sql: `DELETE FROM post_tags WHERE tag_id = ?`, args: [id] });
+    console.log("Deleted from post_tags");
+    const result = await db.execute({ sql: `DELETE FROM tags WHERE id = ?`, args: [id] });
+    console.log("Delete result:", result.rowsAffected);
+  } catch (err) {
+    console.error("Delete tag DB error:", err);
+    throw err;
+  }
 }
