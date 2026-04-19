@@ -43,7 +43,7 @@ export default function About() {
             <div>
               <h4 className="font-medium mb-1">Contact</h4>
               <p className="text-muted-foreground">
-                info [at] beyondtheshelf [dot] com
+                info [at] showkatshafi [dot] com
               </p>
             </div>
           </div>

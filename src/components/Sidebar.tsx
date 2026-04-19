@@ -34,9 +34,9 @@ export function Sidebar() {
       </div>
 
       <div className="card p-6">
-        <h3 className="font-bold text-lg mb-4">Beyond the Shelf</h3>
+        <h3 className="font-bold text-lg mb-4">Showkat Shafi</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          A blog by Showkat Shafi - poet, author, and theatre enthusiast.
+          Author, poet, and theatre enthusiast.
         </p>
         <Link
           to="/about"

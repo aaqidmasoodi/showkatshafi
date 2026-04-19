@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-bold mb-4">Beyond the Shelf</h3>
+            <h3 className="font-bold mb-4">Showkat Shafi</h3>
             <p className="text-sm text-muted-foreground">
               A shelf for poetry enthusiasts, art, literature and theatre lovers.
             </p>
@@ -21,12 +21,12 @@ export function Footer() {
           <div>
             <h4 className="font-medium mb-4">Contact</h4>
             <p className="text-sm text-muted-foreground">
-              info [at] beyondtheshelf [dot] com
+              info [at] showkatshafi [dot] com
             </p>
           </div>
         </div>
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Beyond the Shelf. All rights reserved.
+          © {new Date().getFullYear()} Showkat Shafi. All rights reserved.
         </div>
       </div>
     </footer>

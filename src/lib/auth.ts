@@ -1,6 +1,6 @@
 import { db } from "./db";
 
-const USER_KEY = "beyondtheshelf_user";
+const USER_KEY = "showkatshafi_user";
 
 export async function login(email: string, password: string) {
   const result = await db.execute({

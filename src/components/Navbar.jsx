@@ -10,7 +10,7 @@ export function Navbar() {
       <div className="container">
         <div className="flex items-center justify-between h-16">
 <Link to="/" className="text-xl font-bold hover:text-primary transition-colors">
-              Beyond the Shelf
+              Showkat Shafi
             </Link>
 
           <button
