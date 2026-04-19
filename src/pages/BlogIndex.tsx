@@ -27,7 +27,6 @@ export default function BlogIndex() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-3">
           <div className="mb-8 md:mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4">Blog</h1>
           </div>
 
           {posts.length === 0 ? (
