@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { getCategoryBySlug, getCategoryPosts } from "../lib/categories";
 import { PostCard } from "../components/PostCard";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export default function CategoryPosts() {
   const { slug } = useParams();
@@ -24,11 +25,7 @@ export default function CategoryPosts() {
   }, [slug]);
 
   if (loading) {
-    return (
-      <div className="container py-12">
-        <div className="text-center">Loading...</div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (!category) {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { getTagBySlug, getTagPosts } from "../lib/tags";
 import { PostCard } from "../components/PostCard";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export default function TagPosts() {
   const { slug } = useParams();
@@ -22,11 +23,7 @@ export default function TagPosts() {
   }, [slug]);
 
   if (loading) {
-    return (
-      <div className="container py-12">
-        <div className="text-center">Loading...</div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (!tag) {
