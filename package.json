@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "prepare": "husky init"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@libsql/client": "^0.17.2",
