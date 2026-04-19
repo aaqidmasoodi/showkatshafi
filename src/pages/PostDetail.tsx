@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { getPostBySlug, getPostTags } from "../lib/posts";
 import { Sidebar } from "../components/Sidebar";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export default function PostDetail() {
   const { slug } = useParams();
@@ -23,7 +24,7 @@ export default function PostDetail() {
   if (loading) {
     return (
       <div className="container py-16">
-        <div className="text-center text-muted-foreground">Loading...</div>
+        <LoadingSpinner />
       </div>
     );
   }

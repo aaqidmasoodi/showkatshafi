@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { getPublishedPosts } from "../lib/posts";
 import { PostCard } from "../components/PostCard";
 import { Sidebar } from "../components/Sidebar";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export default function BlogIndex() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -17,7 +18,7 @@ export default function BlogIndex() {
   if (loading) {
     return (
       <div className="container py-16">
-        <div className="text-center text-muted-foreground">Loading...</div>
+        <LoadingSpinner />
       </div>
     );
   }

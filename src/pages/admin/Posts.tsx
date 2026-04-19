@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getAllPostsForAdmin } from "../../lib/admin-posts";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 export default function AdminPosts() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -11,7 +12,7 @@ export default function AdminPosts() {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-16 text-muted-foreground">Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (

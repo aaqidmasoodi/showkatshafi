@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllTagsForAdmin, createTag, deleteTag } from "../../lib/admin-posts";
 import { toast } from "../../components/Toast";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 export default function AdminTags() {
   const [tags, setTags] = useState<any[]>([]);
@@ -55,7 +56,7 @@ export default function AdminTags() {
   );
 
   if (loading) {
-    return <div className="text-center py-16 text-muted-foreground">Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (

@@ -13,6 +13,7 @@ import {
 } from "../../lib/admin-posts";
 import { toast } from "../../components/Toast";
 import { RichTextEditor } from "../../components/RichTextEditor";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { db } from "../../lib/db";
 
 export default function PostEditor() {
@@ -186,7 +187,7 @@ export default function PostEditor() {
   }
 
   if (loading) {
-    return <div className="text-center py-16 text-muted-foreground">Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   return (
