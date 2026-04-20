@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { ToastContainer } from "./components/Toast";
 import { BackToTop } from "./components/BackToTop";
+import { ScrollToTop } from "./components/ScrollToTop";
 import BlogIndex from "./pages/BlogIndex.tsx";
 import PostDetail from "./pages/PostDetail.tsx";
 import About from "./pages/About.tsx";
@@ -18,6 +19,7 @@ import AdminTags from "./pages/admin/Tags";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Routes>
           <Route path="/login" element={<Login />} />

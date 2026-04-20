@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router";
 import { getPostBySlug, getPostTags } from "../lib/posts";
 import { Sidebar } from "../components/Sidebar";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { TableOfContents } from "../components/TableOfContents";
 
 export default function PostDetail() {
   const { slug } = useParams();
@@ -11,11 +12,19 @@ export default function PostDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setLoading(true);
     getPostBySlug(slug!).then((postData) => {
       setPost(postData);
       if (postData) {
         getPostTags(postData.id).then(setTags);
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(postData.body, "text/html");
+        const elements = doc.querySelectorAll("h1, h2, h3");
+        elements.forEach((el, index) => {
+          el.id = `heading-${index}`;
+        });
+        postData.body = doc.body.innerHTML;
       }
       setLoading(false);
     });
@@ -56,6 +65,8 @@ export default function PostDetail() {
           )}
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+
+          <TableOfContents content={post.body} />
 
           <div className="flex items-center gap-4 mb-8 text-muted-foreground">
             {post.author_name && <span>By <span className="font-medium text-foreground">{post.author_name}</span></span>}
